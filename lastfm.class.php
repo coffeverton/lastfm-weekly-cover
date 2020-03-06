@@ -26,11 +26,14 @@ class LastFM {
 
       $image = '';
       $info = $this->getAlbumInfo($album['artist']['#text'], $album['name']);
+      $name = $info['album']['name'];
       foreach($info['album']['image'] as $item) {
         $image = $item['#text'];
       }
-      $images[] = $image;
-    //  continuar: pegar apenas imagens e colar todas juntas
+      $images[] = [
+        'name' => $name,
+        'image' => $image
+      ];
     }
     print_r($images);
   }
